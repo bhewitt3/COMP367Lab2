@@ -26,21 +26,21 @@ pipeline {
 			steps {
 				script {
 					echo "Starting docker build"
-					sh "sudo docker build -t ${DOCKER_IMAGE} ."
+					sh "docker build -t ${DOCKER_IMAGE} ."
 				}
 			}
 		}
 		stage('Docker Login') {
 			steps {
 				withCredentials([usernamePassword(credentialsId: 'd2e02ff4-b3d1-4520-83fb-8c690a37d127', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-					sh "sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+					sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
 				}
 			}
 		}
 		stage('Docker Push') {
 			steps {
 				script {
-					sh "sudo docker push ${DOCKER_IMAGE}"
+					sh "docker push ${DOCKER_IMAGE}"
 				}
 			}
 		}
