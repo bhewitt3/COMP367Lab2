@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	environment {
-		DOCKER_IMAGE = "blake/lab3"
+		DOCKER_IMAGE = "bhewitt3/lab3"
 	}
 
 	tools {
